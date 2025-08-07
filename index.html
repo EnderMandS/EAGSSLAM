@@ -1,74 +1,317 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EAGS-SLAM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="static/css/dics.original.css">
+    <script src="static/js/dics.original.js"></script>
+    <script src="static/js/event_handler.js"></script>
+    <title>
+        EAGS-SLAM
+    </title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="container">
-                <h1>EAGSSLAM</h1>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <section class="section">
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h2>Welcome to EAGS-SLAM</h2>
-                <p>Advanced SLAM (Simultaneous Localization and Mapping) Research Project</p>
-                <button class="cta-button" onclick="scrollToSection('about')">Learn More</button>
-            </div>
-        </section>
+        <div class="container has-text-centered">
+            <!-- paper title -->
+            <p class="title is-3"> EAGS-SLAM: Edge-Assisted Gaussian Splatting SLAM </p>
+            <!-- publication -->
+            <!-- <p class="subtitle is-4"> Research Project </p> -->
+            <!-- authors -->
+            <p class="title is-5 mt-2" style="color: black;">
+                Anonymous authors
+            </p>
+            <!-- affiliations -->
+            <!-- <p class="subtitle is-5">
+                <sup>1</sup> Research Institution &nbsp;
+            </p> -->
 
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About the Project</h2>
-                <p>EAGSSLAM is a cutting-edge research project focused on developing advanced algorithms for
-                    simultaneous localization and mapping. Our goal is to improve navigation and mapping capabilities in
-                    various environments.</p>
+            <!-- other links -->
+            <div class="is-flex is-justify-content-center">
+                <span class="icon-text mx-1">
+                    <a class="button is-dark" href="" role="button" target="_blank"> <span class="icon"> <ion-icon
+                                name="document-outline"></ion-icon> </span> <span> Paper </span> </a>
+                </span>
+                <span class="icon-text mx-1">
+                    <a class="button is-dark" href="https://github.com/EnderMandS/EAGS-SLAM" role="button"
+                        target="_blank"> <span class="icon"> <ion-icon name="logo-github"></ion-icon> </span> <span>
+                            Code </span> </a>
+                </span>
             </div>
-        </section>
 
-        <section id="features" class="section">
-            <div class="container">
-                <h2>Key Features</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>Real-time Processing</h3>
-                        <p>Efficient algorithms for real-time localization and mapping.</p>
+        </div>
+
+        <!-- main container -->
+        <div class="container is-max-desktop has-text-centered">
+
+            <!-- abstract -->
+            <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+            <p class="content is-size-5 has-text-justified">
+                Existing 3D Gaussian Splatting (3DGS)-based Simultaneous Localization and Mapping (SLAM) methods improve
+                tracking accuracy and rendering quality by introducing more components such as loop closure. However,
+                this comes at the cost of reduced speed and these methods do not effectively utilize the information in
+                the image. In this paper, we propose EAGS-SLAM, an edge-assisted RGB-D Gaussian Splatting SLAM that
+                utilizes edge information in images to improve system performance. EAGS-SLAM combines edge-based visual
+                odometry and gaussian tracking, reducing camera tracking time by up to half. The mapping backend uses
+                edge information to assist in gaussian seeding to capture geometric details in the image. Our system
+                uses a decoupled submap system that can run loop closure in parallel, ensuring globally consistent
+                mapping while improving system speed. We evaluated our system on real-world datasets ScanNet, TUM RGB-D,
+                and synthetic dataset Replica. Compared to some existing state-of-the-art systems, our system is
+                competitive or superior in terms of tracking, rendering, and system speed.
+            </p>
+            <div class="line"></div>
+
+            <p class="title is-3 mt-5 has-text-centered">System Overview</p>
+            <figure class="image">
+                <img src="images/system.jpg">
+            </figure>
+
+            <p class="title is-3 mt-5 has-text-centered"> Key Features </p>
+            <div class="columns is-desktop">
+                <div class="column">
+                    <div class="box" style="height: 100%; display: flex; flex-direction: column;">
+                        <h4 class="title is-4">Coarse-to-Fine Tracking</h4>
+                        <p style="flex-grow: 1;">Combining edge-based visual odometry and gaussian tracking to reduce
+                            tracking time.</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>Multi-sensor Fusion</h3>
-                        <p>Integration of various sensor data for improved accuracy.</p>
+                </div>
+                <div class="column">
+                    <div class="box" style="height: 100%; display: flex; flex-direction: column;">
+                        <h4 class="title is-4">Edge-Assisted Gaussian Seeding</h4>
+                        <p style="flex-grow: 1;">Using edge information for gaussian seeding to improve rendering
+                            quality.</p>
                     </div>
-                    <div class="feature-card">
-                        <h3>Robust Performance</h3>
-                        <p>Reliable performance in challenging environments.</p>
+                </div>
+                <div class="column">
+                    <div class="box" style="height: 100%; display: flex; flex-direction: column;">
+                        <h4 class="title is-4">Parallel Loop Closure</h4>
+                        <p style="flex-grow: 1;">Optimized the submap system to run loop closure in parallel, improving
+                            system speed.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer id="contact">
-        <div class="container">
-            <p>&copy; 2024 EAGSSLAM Project. All rights reserved.</p>
+            <div class="line"></div>
+
+            <p class="title is-3 mt-5 has-text-centered"> Videos </p>
+
+            <p class="is-3 mt-5 has-text-center"><b>Replica</b></p>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>room 0</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/room0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>room 1</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/room1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>room 2</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/room2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>office 0</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/office0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>office 1</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/office1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>office 2</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/office2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>office 3</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/office3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>office 4</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/replica/office4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column"></div>
+            </div>
+
+            <p class="is-3 mt-5 has-text-center"><b>TUM RGB-D</b></p>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>fr1/desk</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/tum/desk.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>fr1/desk2</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/tum/desk2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>fr1/room</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/tum/room.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>fr2/xyz</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/tum/xyz.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>fr3/office</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/tum/fr3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column"></div>
+            </div>
+
+            <p class="is-3 mt-5 has-text-center"><b>ScanNet</b></p>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>scene 000</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/000.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>scene 059</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/059.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>scene 106</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/106.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div><b>scene 169</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/169.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>scene 181</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/181.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="column">
+                    <div><b>scene 207</b></div>
+                    <video autoplay controls muted loop playsinline>
+                        <source src="videos/scannet/207.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <p class="title is-3 mt-5 has-text-centered"> Reconstruction Mesh </p>
+            <p class="subtitle is-6">Please make sure that your browser supports hardware acceleration.</p>
+
+            <div class="embed-responsive embed-responsive-16by9" style="height: 600px; margin: 20px 0;">
+                <iframe style="clip-path: inset(1px 1px)"
+                    src="https://sketchfab.com/playlists/embed?collection=5c86e294a05d4981813cc24c8fb275f5&autostart=1"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                    mozallowfullscreen="true" webkitallowfullscreen="true" width="100%" height="100%" frameborder="0">
+                </iframe>
+            </div>
+
+            <div class="line"></div>
+
+            <p class="title is-3 mt-5 has-text-centered"> Render Comparison </p>
+
+            <div class="render-comparison render-comparison-tum">
+                <h4 class="title is-4">TUM RGB-D - fr3/office</h4>
+                <div class="b-dics" style="width: 100%; max-width: 1000px; font-weight: 600; margin: 0 auto;">
+                    <img src="images/render/tum/fr3_office/GaussianSLAM.png" alt="Gaussian-SLAM">
+                    <img src="images/render/tum/fr3_office/LoopSplat.png" alt="LoopSplat">
+                    <img src="images/render/tum/fr3_office/EAGS.png" alt="EAGS-SLAM (Ours)">
+                    <img src="images/render/tum/fr3_office/GT.png" alt="Ground Truth">
+                </div>
+            </div>
+
+            <div class="render-comparison render-comparison-replica">
+                <h4 class="title is-4">Replica room0</h4>
+                <div class="b-dics" style="width: 100%; max-width: 1000px; font-weight: 600; margin: 0 auto;">
+                    <img src="images/render/replica/room0/GaussianSLAM.png" alt="Gaussian-SLAM">
+                    <img src="images/render/replica/room0/LoopSplat.png" alt="LoopSplat">
+                    <img src="images/render/replica/room0/EAGS.png" alt="EAGS-SLAM (Ours)">
+                    <img src="images/render/replica/room0/GT.png" alt="Ground Truth">
+                </div>
+            </div>
+
+            <div class="render-comparison render-comparison-scannet">
+                <h4 class="title is-4">ScanNet scene 169</h4>
+                <div class="b-dics" style="width: 100%; max-width: 1000px; font-weight: 600; margin: 0 auto;">
+                    <img src="images/render/scannet/169/GaussianSLAM.png" alt="Gaussian-SLAM">
+                    <img src="images/render/scannet/169/LoopSplat.png" alt="LoopSplat">
+                    <img src="images/render/scannet/169/EAGS.png" alt="EAGS-SLAM (Ours)">
+                    <img src="images/render/scannet/169/GT.png" alt="Ground Truth">
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <p class="title is-3 mt-5 has-text-centered"> Citation </p>
+            <pre><code>Under review. Please check back later.</code></pre>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <div class="line"></div>
+            <p style="color: black;">Website template inspired by <a
+                    href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, <a
+                    href="https://github.com/flashslam/flashslam.github.io">FlashSLAM</a> and <a
+                    href="https://github.com/loopsplat/loopsplat.github.io">LoopSplat</a>.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="scripts.js" defer></script>
 
 </html>
