@@ -1,6 +1,6 @@
 # EAGS-SLAM Project Page
 
-This is the project page of [EAGS-SLAM](https://github.com/EnderMandS/EAGS-SLAM).
+This is the [project page](https://endermands.github.io/EAGSSLAM/) of [EAGS-SLAM](https://github.com/EnderMandS/EAGS-SLAM).
 
 Template inspired by [Nerfies](https://github.com/nerfies/nerfies.github.), [LoopSplat](https://github.com/loopsplat/loopsplat.github.io) and [FlashSLAM](https://github.com/flashslam/flashslam.github.io/)
 
